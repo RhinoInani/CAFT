@@ -8,8 +8,8 @@ AppBar navbar(Size size, BuildContext context) {
   return AppBar(
     backgroundColor: mainColor,
     elevation: 0,
-    leadingWidth: size.width * 0.2,
-    toolbarHeight: size.height * 0.08,
+    leadingWidth: size.width * 0.3,
+    toolbarHeight: size.height * 0.09,
     leading: MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -21,17 +21,9 @@ AppBar navbar(Size size, BuildContext context) {
         },
         child: Row(
           children: [
-            // Image.asset(
-            //   'assets/logo.png',
-            //   width: size.width * 0.05,
-            // ),
-            Text(
-              "CAFT",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: size.longestSide * 0.018,
-              ),
+            Image.asset(
+              'assets/logo.png',
+              fit: BoxFit.fitHeight,
             ),
           ],
         ),
@@ -68,12 +60,12 @@ AppBar navbar(Size size, BuildContext context) {
         checkNamed: "contactus",
         pushNamed: "/contact-us",
       ),
-      NavBarButton(
-        size: size,
-        title: 'Join Us',
-        checkNamed: "join",
-        pushNamed: "/join",
-      ),
+      // NavBarButton(
+      //   size: size,
+      //   title: 'Join Us',
+      //   checkNamed: "join",
+      //   pushNamed: "/join",
+      // ),
     ],
   );
 }
@@ -92,8 +84,8 @@ class PagesSliverAppBar extends StatelessWidget {
       floating: true,
       backgroundColor: mainColor,
       elevation: 0,
-      leadingWidth: size.width * 0.2,
-      toolbarHeight: size.height * 0.08,
+      leadingWidth: size.width * 0.3,
+      toolbarHeight: size.height * 0.09,
       leading: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
@@ -105,17 +97,9 @@ class PagesSliverAppBar extends StatelessWidget {
           },
           child: Row(
             children: [
-              // Image.asset(
-              //   'assets/logo.png',
-              //   width: size.width * 0.05,
-              // ),
-              Text(
-                "CAFT",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: size.longestSide * 0.018,
-                ),
+              Image.asset(
+                'assets/logo.png',
+                fit: BoxFit.fitHeight,
               ),
             ],
           ),
@@ -152,12 +136,12 @@ class PagesSliverAppBar extends StatelessWidget {
           checkNamed: "contactus",
           pushNamed: "/contact-us",
         ),
-        NavBarButton(
-          size: size,
-          title: 'Join Us',
-          checkNamed: "join",
-          pushNamed: "/join",
-        ),
+        // NavBarButton(
+        //   size: size,
+        //   title: 'Join Us',
+        //   checkNamed: "join",
+        //   pushNamed: "/join",
+        // ),
       ],
     );
   }

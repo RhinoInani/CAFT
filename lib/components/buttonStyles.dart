@@ -46,7 +46,7 @@ class NavBarButton extends StatelessWidget {
         child: Text(
           "$title",
           style: TextStyle(
-            fontSize: size.longestSide * 0.013,
+            fontSize: size.longestSide * 0.014,
             fontWeight: FontWeight.w500,
           ),
         ),

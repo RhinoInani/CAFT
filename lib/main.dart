@@ -5,8 +5,11 @@ import 'package:caft/pageNotFound.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:wave/config.dart';
+import 'package:wave/wave.dart';
 
 import 'components/navBars.dart';
+import 'contact.dart';
 import 'events.dart';
 
 void main() {
@@ -26,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/home': (contact) => HomePage(),
         '/about-us': (context) => AboutUs(),
         '/events': (context) => UpcomingEvents(),
+        '/contact-us': (context) => ContactUs(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (context) {
@@ -102,14 +106,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     parent: _controller5,
     curve: Curves.ease,
   );
-  late final AnimationController _controller6 = AnimationController(
-    duration: const Duration(milliseconds: 600),
-    vsync: this,
-  );
-  late final Animation<double> _animation6 = CurvedAnimation(
-    parent: _controller6,
-    curve: Curves.ease,
-  );
 
   @override
   void initState() {
@@ -130,7 +126,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       if (offset >= size.height * 0.45 + (add * 2)) _controller3.forward();
       if (offset >= size.height * 0.45 + (add * 3)) _controller4.forward();
       if (offset >= size.height * 0.45 + (add * 4)) _controller5.forward();
-      if (offset >= size.height * 0.45 + (add * 5)) _controller6.forward();
     });
 
     return Title(
@@ -227,15 +222,24 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ],
                     ),
                   ),
+                  Positioned(
+                    bottom: 0,
+                    child: WaveWidget(
+                      config: CustomConfig(
+                        colors: [mainColor],
+                        durations: [1000000],
+                        heightPercentages: [0.5],
+                      ),
+                      waveAmplitude: size.height * 0.013,
+                      waveFrequency: 2,
+                      size: Size(
+                        size.width,
+                        size.height * 0.2,
+                      ),
+                    ),
+                  ),
                 ],
               ),
-              // Divider(
-              //   height: size.height * 0.04,
-              //   color: Colors.black,
-              //   thickness: 2,
-              //   indent: size.width * 0.1,
-              //   endIndent: size.width * 0.1,
-              // ),
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -268,7 +272,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           ),
                         ),
                         Positioned(
-                          top: size.height * 0.28,
+                          top: size.height * 0.27,
                           left: size.width * 0.06,
                           child: FadeTransition(
                             opacity: _animation2,
@@ -283,7 +287,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           ),
                         ),
                         Positioned(
-                          top: size.height * 0.56,
+                          top: size.height * 0.54,
                           left: size.width * 0.35,
                           child: FadeTransition(
                             opacity: _animation3,
@@ -298,7 +302,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           ),
                         ),
                         Positioned(
-                          top: size.height * 0.84,
+                          top: size.height * 0.805,
                           left: size.width * 0.06,
                           child: FadeTransition(
                             opacity: _animation4,
@@ -313,7 +317,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           ),
                         ),
                         Positioned(
-                          top: size.height * 1.12,
+                          top: size.height * 1.08,
                           left: size.width * 0.35,
                           child: FadeTransition(
                             opacity: _animation5,
@@ -332,12 +336,30 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             child: CustomPaint(
                               size: Size(
                                 size.width * 0.1,
-                                size.height * 1.4,
+                                size.height * 1.35,
                               ),
                               painter: ShapePrinter(),
                             ),
                           ),
                         ),
+                        // Positioned(
+                        //   bottom: 0,
+                        //   child: WaveWidget(
+                        //     config: CustomConfig(
+                        //       colors: [
+                        //         Color.fromRGBO(15, 40, 87, 0.9098039215686274)
+                        //       ],
+                        //       durations: [1000000],
+                        //       heightPercentages: [0.5],
+                        //     ),
+                        //     waveAmplitude: size.height * 0.03,
+                        //     waveFrequency: 2,
+                        //     size: Size(
+                        //       size.width,
+                        //       size.height * 0.2,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                     SizedBox(
@@ -500,11 +522,10 @@ class ShapePrinter extends CustomPainter {
       ..strokeCap = StrokeCap.round;
 
     Offset startingPoint = Offset(size.width / 2, 0);
-    Offset endingPoint =
-        Offset(size.width / 2, size.height + size.height * 0.028);
+    Offset endingPoint = Offset(size.width / 2, size.height);
 
     canvas.drawLine(startingPoint, endingPoint, paintLine);
-    while (yOffset <= size.height + size.height * 0.014) {
+    while (yOffset <= size.height) {
       canvas.drawCircle(Offset(size.width / 2, yOffset), 10, paintCircle);
       counter % 2 == 0
           ? canvas.drawLine(Offset(size.width / 2 + 15, yOffset),
