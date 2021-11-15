@@ -107,6 +107,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     curve: Curves.ease,
   );
 
+  late final AnimationController _controller6 = AnimationController(
+    duration: const Duration(milliseconds: 600),
+    vsync: this,
+  );
+  late final Animation<double> _animation6 = CurvedAnimation(
+    parent: _controller6,
+    curve: Curves.ease,
+  );
+  late final AnimationController _controller7 = AnimationController(
+    duration: const Duration(milliseconds: 600),
+    vsync: this,
+  );
+  late final Animation<double> _animation7 = CurvedAnimation(
+    parent: _controller7,
+    curve: Curves.ease,
+  );
+
   @override
   void initState() {
     scrollController = ScrollController();
@@ -126,6 +143,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       if (offset >= size.height * 0.45 + (add * 2)) _controller3.forward();
       if (offset >= size.height * 0.45 + (add * 3)) _controller4.forward();
       if (offset >= size.height * 0.45 + (add * 4)) _controller5.forward();
+      if (offset >= size.height * 0.45 + (add * 5)) _controller6.forward();
+      if (offset >= size.height * 0.45 + (add * 6.5)) _controller7.forward();
     });
 
     return Title(
@@ -223,7 +242,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     ),
                   ),
                   Positioned(
-                    bottom: 0,
+                    bottom: -2,
                     child: WaveWidget(
                       config: CustomConfig(
                         colors: [mainColor],
@@ -362,16 +381,218 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         // ),
                       ],
                     ),
-                    SizedBox(
-                      height: size.height * 0.2,
+                    FadeTransition(
+                      opacity: _animation6,
+                      child: ExtraInformation(
+                        size: size,
+                        containerBody: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Text(
+                                "Why Us?",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline4!
+                                    .copyWith(color: mainColor),
+                              ),
+                            ),
+                            BulletText(
+                                text:
+                                    "We provide leadership opportunities and experiences"),
+                            BulletText(
+                                text:
+                                    "Skill Building and Networking opportunities"),
+                            BulletText(text: "Discover and build passion"),
+                            BulletText(
+                                text:
+                                    "The ability to work with a team of motivated and dedicated people"),
+                            BulletText(text: "Diversity of experience"),
+                          ],
+                        ),
+                        imagePath: 'assets/caftBack4.jpg',
+                        flipped: false,
+                      ),
+                    ),
+                    FadeTransition(
+                      opacity: _animation7,
+                      child: ExtraInformation(
+                        size: size,
+                        containerBody: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Text(
+                                "Upcoming Events",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline4!
+                                    .copyWith(color: mainColor),
+                              ),
+                            ),
+                            BulletText(text: "Providing Resources"),
+                            BulletText(
+                                text:
+                                    "Professor, Teachers, and Student Writing"),
+                            BulletText(text: "Field Trips to Museums"),
+                            BulletText(text: "Reading and Writing Workshops"),
+                            BulletText(text: "Out Reach"),
+                          ],
+                        ),
+                        imagePath: 'assets/caftBack1.jpg',
+                        flipped: true,
+                      ),
+                    ),
+                    WaveWidget(
+                      config: CustomConfig(
+                        gradients: [
+                          [
+                            mainColor,
+                            Color.fromRGBO(15, 40, 87, 0.9098039215686274),
+                          ]
+                        ],
+                        gradientBegin: Alignment.centerLeft,
+                        gradientEnd: Alignment.centerRight,
+                        durations: [1000000],
+                        heightPercentages: [0.6],
+                      ),
+                      waveAmplitude: size.height * 0.013,
+                      waveFrequency: 2,
+                      size: Size(
+                        size.width,
+                        size.height * 0.3,
+                      ),
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class ExtraInformation extends StatelessWidget {
+  const ExtraInformation({
+    Key? key,
+    required this.size,
+    required this.containerBody,
+    required this.imagePath,
+    required this.flipped,
+  }) : super(key: key);
+
+  final Size size;
+  final Column containerBody;
+  final String imagePath;
+  final bool flipped;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: size.height * 0.2,
+        right: size.width * 0.05,
+        left: size.width * 0.05,
+      ),
+      child: flipped
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  width: size.width * 0.4,
+                  height: size.height * 0.3,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                        mainColor.withOpacity(0.8),
+                        BlendMode.dstATop,
+                      ),
+                      image: AssetImage(
+                        "$imagePath",
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  width: size.width * 0.4,
+                  height: size.height * 0.3,
+                  decoration: BoxDecoration(
+                    color: secondColor,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                  ),
+                  child: containerBody,
+                ),
+              ],
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  width: size.width * 0.4,
+                  height: size.height * 0.31,
+                  decoration: BoxDecoration(
+                    color: secondColor,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey[500]!,
+                        offset: Offset(0, 2),
+                      )
+                    ],
+                  ),
+                  child: containerBody,
+                ),
+                Container(
+                  width: size.width * 0.4,
+                  height: size.height * 0.31,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                        mainColor.withOpacity(0.8),
+                        BlendMode.dstATop,
+                      ),
+                      image: AssetImage(
+                        "$imagePath",
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+    );
+  }
+}
+
+class BulletText extends StatelessWidget {
+  const BulletText({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "\u2022 $text",
+      style:
+          Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.black),
     );
   }
 }
