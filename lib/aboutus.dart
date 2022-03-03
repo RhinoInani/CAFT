@@ -91,11 +91,25 @@ class AboutUs extends StatelessWidget {
                           SizedBox(
                             height: size.height * 0.03,
                           ),
+                          OurTeamCard(
+                              name: ourTeamName[index],
+                              position: ourTeamPosition[index]),
                         ],
                       ),
                     );
+                  } else {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: size.longestSide * 0.01,
+                        horizontal: size.longestSide * 0.02,
+                      ),
+                      child: OurTeamCard(
+                          name: ourTeamName[index],
+                          position: ourTeamPosition[index]),
+                    );
                   }
                 },
+                childCount: ourTeamName.length,
               ),
             ),
           ],
@@ -203,6 +217,48 @@ class AboutUsCard extends StatelessWidget {
                 ),
               ],
             ),
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(10),
+      ),
+    );
+  }
+}
+
+class OurTeamCard extends StatelessWidget {
+  final String name;
+  final String position;
+  const OurTeamCard({Key? key, required this.name, required this.position})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      padding: EdgeInsets.all(size.longestSide * 0.015),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "$name:",
+                style: TextStyle(
+                    color: mainColor, fontSize: size.longestSide * 0.017),
+              ),
+              SizedBox(
+                width: size.width * 0.03,
+              ),
+              Text(
+                "$position",
+                style: TextStyle(
+                    fontSize: size.longestSide * 0.017, color: Colors.black),
+              ),
+            ],
+          ),
+        ),
+      ]),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(10),

@@ -45,3 +45,23 @@ List<String> eventBody = [
   lorem,
   lorem,
 ];
+
+List<String> ourTeamName = [
+  "Maha Kaushik",
+  "Tvisha Gupta",
+  "Sneha Wadhwa",
+  "Kashish Naggar",
+  "Dillon Huang",
+  "Rohin Inani",
+  "Kashish Agarwal",
+];
+
+List<String> ourTeamPosition = [
+  "President and Founder",
+  "Vice President",
+  "Secretary",
+  "Chief Financial Officer",
+  "Marketing officer",
+  "Chef Technical Officer",
+  "Treasurer",
+];

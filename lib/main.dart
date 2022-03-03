@@ -66,6 +66,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   double offset = 0;
   late ScrollController scrollController;
+
   late final AnimationController _controller = AnimationController(
     duration: const Duration(milliseconds: 600),
     vsync: this,
@@ -106,7 +107,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     parent: _controller5,
     curve: Curves.ease,
   );
-
   late final AnimationController _controller6 = AnimationController(
     duration: const Duration(milliseconds: 600),
     vsync: this,
