@@ -1,3 +1,5 @@
+import 'dart:html' as html;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -129,6 +131,7 @@ class AboutUsCard extends StatelessWidget {
     required this.imagePath,
     required this.flipped,
     required this.headerText,
+    this.link,
   }) : super(key: key);
 
   final Size size;
@@ -138,6 +141,7 @@ class AboutUsCard extends StatelessWidget {
   final String imagePath;
   final bool flipped;
   final String headerText;
+  final String? link;
 
   @override
   Widget build(BuildContext context) {
@@ -169,13 +173,21 @@ class AboutUsCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(size.longestSide * 0.005),
-                  child: Image.asset(
-                    '$imagePath',
-                    fit: BoxFit.scaleDown,
-                    height: imageHeight,
-                    width: imageWidth,
+                GestureDetector(
+                  onTap: () {
+                    if (link!.length > 0) {
+                      html.window.open('${link!}', "_blank");
+                    }
+                  },
+                  child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(size.longestSide * 0.005),
+                    child: Image.asset(
+                      '$imagePath',
+                      fit: BoxFit.fitWidth,
+                      // height: imageHeight,
+                      width: imageWidth,
+                    ),
                   ),
                 ),
               ],
@@ -183,14 +195,22 @@ class AboutUsCard extends StatelessWidget {
           : Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ClipRRect(
-                  clipBehavior: Clip.antiAlias,
-                  borderRadius: BorderRadius.circular(size.longestSide * 0.005),
-                  child: Image.asset(
-                    '$imagePath',
-                    fit: BoxFit.scaleDown,
-                    height: imageHeight,
-                    width: imageWidth,
+                GestureDetector(
+                  onTap: () {
+                    if (link!.length > 0) {
+                      html.window.open('${link!}', "_blank");
+                    }
+                  },
+                  child: ClipRRect(
+                    clipBehavior: Clip.antiAlias,
+                    borderRadius:
+                        BorderRadius.circular(size.longestSide * 0.005),
+                    child: Image.asset(
+                      '$imagePath',
+                      fit: BoxFit.fitWidth,
+                      // height: imageHeight,
+                      width: imageWidth,
+                    ),
                   ),
                 ),
                 Container(

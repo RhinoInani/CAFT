@@ -56,6 +56,12 @@ AppBar navbar(Size size, BuildContext context) {
       // ),
       NavBarButton(
         size: size,
+        title: 'Recordings',
+        checkNamed: "recordings",
+        pushNamed: '/recordings',
+      ),
+      NavBarButton(
+        size: size,
         title: 'Contact Us',
         checkNamed: "contactus",
         pushNamed: "/contact-us",
@@ -130,6 +136,12 @@ class PagesSliverAppBar extends StatelessWidget {
         //   checkNamed: "resources",
         //   pushNamed: "/resources",
         // ),
+        NavBarButton(
+          size: size,
+          title: 'Recordings',
+          checkNamed: "recordings",
+          pushNamed: '/recordings',
+        ),
         NavBarButton(
           size: size,
           title: 'Contact Us',

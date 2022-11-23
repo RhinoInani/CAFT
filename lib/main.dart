@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:caft/aboutus.dart';
 import 'package:caft/constants.dart';
 import 'package:caft/pageNotFound.dart';
+import 'package:caft/recordings.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/about-us': (context) => AboutUs(),
         '/events': (context) => UpcomingEvents(),
         '/contact-us': (context) => ContactUs(),
+        '/recordings': (context) => Recordings(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (context) {
