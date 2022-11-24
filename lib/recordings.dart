@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 
 import 'components/navBars.dart';
 
-class Recordings extends StatelessWidget {
-  const Recordings({Key? key}) : super(key: key);
+class Resources extends StatelessWidget {
+  const Resources({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Title(
       color: Colors.white,
-      title: "Recordings",
+      title: "Resources",
       child: Scaffold(
         body: CustomScrollView(
           slivers: [

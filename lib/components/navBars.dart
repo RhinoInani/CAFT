@@ -56,9 +56,9 @@ AppBar navbar(Size size, BuildContext context) {
       // ),
       NavBarButton(
         size: size,
-        title: 'Recordings',
-        checkNamed: "recordings",
-        pushNamed: '/recordings',
+        title: 'Resources',
+        checkNamed: "resources",
+        pushNamed: '/resources',
       ),
       NavBarButton(
         size: size,

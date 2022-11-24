@@ -117,7 +117,6 @@ class _ContactUsState extends State<ContactUs> {
                       ),
                       IconButton(
                         onPressed: () {
-                          var html;
                           html.window.open(
                               'https://www.instagram.com/classicsaft/',
                               "_blank");

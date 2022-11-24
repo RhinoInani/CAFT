@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         '/about-us': (context) => AboutUs(),
         '/events': (context) => UpcomingEvents(),
         '/contact-us': (context) => ContactUs(),
-        '/recordings': (context) => Recordings(),
+        '/resources': (context) => Resources(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (context) {

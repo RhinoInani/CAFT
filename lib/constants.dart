@@ -94,6 +94,6 @@ List<String> ourTeamPosition = [
   "Secretary",
   "Chief Financial Officer",
   "Marketing officer",
-  "Chef Technical Officer",
+  "Chief Technical Officer",
   "Treasurer",
 ];
